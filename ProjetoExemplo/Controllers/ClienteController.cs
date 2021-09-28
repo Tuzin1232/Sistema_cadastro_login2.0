@@ -22,7 +22,7 @@ namespace ProjetoExemplo.Controllers
         {
             try
             {
-                bool clienteExistente = _Context.Clientes.Where(u => u.nome.ToUpper() == model.nome.ToUpper()).Count() > 0;
+                var clienteExistente = _Context.Clientes.Where(u => u.nome.ToUpper() == model.nome.ToUpper()).Count() > 0;
                 if (!clienteExistente)
                 {
                     _Context.Clientes.Add(model);

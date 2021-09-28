@@ -13,6 +13,7 @@ import columns from './RepositorioSistemas';
 import { useCookies } from 'react-cookie';
 import './home.css'
 
+
 function Home() {
     const [valor, setValor] = useState("");
     const [sistemas, setSistemas] = useState([])
@@ -134,78 +135,62 @@ function Home() {
             <div className="form">
                 <p>Informações do contrato</p>
                 <form className="form_contrato" noValidate autoComplete="on" style={{ display: 'flex', gap: "2em" }}>
-
-                    <Controller
-                        name="codigo"
-                        control={control}
-                        defaultValue=""
+                    <TextField
+                        required
+                        id="codigo"
+                        label="Código"
                         value={codigoCliente}
-                        render={({ field }) => <TextField disabled id="codigo" label="Código" {...field} />}
+                        defaultValue=""
                     />
 
-                    <p>Pode Avaliar</p>
-                    <Controller
-                        name="avaliar"
-                        control={control}
+                    <TextField
+                        required
                         defaultValue={false}
+                        id="avaliar"
+                        label="Pode Avaliar"
                         value={avaliacao}
-                        onChange={
-
-                            (e) => {
-
-                                setAvaliacao(avaliacao + "a")
-                            }
-
-                        }
-
-                        render={({ field }) => <Switch id="avaliar" name="avaliar" label="Pode Avaliar" color="default" inputProps={{ 'aria-label': 'checkbox with default color' }} {...field} />}
+                        defaultValue=""
                     />
 
                     <FormControl id="tipoForm" className="tipo" style={{ width: "70px" }}>
                         <InputLabel id="tipoLabel">Tipo</InputLabel>
-                        <Controller
-                            name="tipo"
-                            control={control}
+                        <Select labelId="" id="tipo"
                             defaultValue=""
                             value={tipo}
-                            onChange={(e) => setTipo(e.target.value)}
-                            render={({ field }) => (
-                                <Select labelId="" id="tipo" {...field}>
-                                    <MenuItem value={1}>1 </MenuItem>
-                                    <MenuItem value={2}>2 </MenuItem>
-                                    <MenuItem value={3}>3 </MenuItem>
-                                </Select>
-                            )
-                            }
-                        />
+                            onChange={(e) => setTipo(e.target.value)}>
+                            <MenuItem value={1}>1 </MenuItem>
+                            <MenuItem value={2}>2 </MenuItem>
+                            <MenuItem value={3}>3 </MenuItem>
+                        </Select>
 
                     </FormControl>
-
                     <p>Pendencia Financeira</p>
-                    <Controller
-                        name="pend_financeira"
-                        control={control}
+
+                    <Switch
                         defaultValue={false}
                         value={pendFinanceira}
                         onChange={(e) => setPendFinanceira(e.target.checked)}
-                        render={({ field }) => <Switch id="pendFinanc" name="pend_financeira" color="default" inputProps={{ 'aria-label': 'checkbox with default color' }}{...field} />} />
+                        id="pendFinanc"
+                        inputProps={{ 'aria-label': 'checkbox with default color' }}
+                    />
 
-                    <Controller
-                        name="meses_atrasado"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={mesAtraso}
                         onChange={(e) => setMesAtraso(e.target.value)}
-                        render={({ field }) => <TextField id="meses_atrasado" label="Meses em Atraso" type="number"{...field} />} />
+                        id="meses_atrasado"
+                        label="Meses em Atraso"
+                        type="number" />
 
                     <p>Contrato Ativo</p>
-                    <Controller
-                        name="contrato_atv"
-                        control={control}
+                    <Switch
                         defaultValue={false}
                         value={contratoAtivo}
                         onChange={(e) => setContratoAtivo(e.target.checked)}
-                        render={({ field }) => <Switch id="contrato_atv" name="contrato_atv" color="default" inputProps={{ 'aria-label': 'checkbox with default color' }}{...field} />} />
+                        id="contrato_atv"
+                        name="contrato_atv"
+                        color="default"
+                        inputProps={{ 'aria-label': 'checkbox with default color' }} />
 
                 </form>
             </div>
@@ -214,188 +199,168 @@ function Home() {
                 <p>Informações do Cliente</p>
                 <form className="form_cliente" noValidate autoComplete="on" style={{ display: 'flex', gap: "1.5em", flexWrap: "wrap" }}>
 
-                    <Controller
-                        name="nome"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}
-                        render={({ field }) => <TextField id="nome" label="Nome" {...field} />}
+                        id="nome"
+                        label="Nome"
                     />
 
-                    <Controller
-                        name="cnpj"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={cnpj}
                         onChange={(e) => setCnpj(e.target.value)}
-                        render={({ field }) => <TextField id="cnpj" label="CNPJ" type="number" {...field} />}
+                        id="cnpj"
+                        label="CNPJ"
+                        type="number"
                     />
 
-                    <Controller
-                        name="cpf"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={cpf}
                         onChange={(e) => setCpf(e.target.value)}
-                        render={({ field }) => <TextField id="cpf" label="CPF" type="number" {...field} />}
+                        id="cpf"
+                        label="CPF"
+                        type="number"
                     />
-                    <Controller
-                        name="telefone"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={telefone}
                         onChange={(e) => setTelefone(e.target.value)}
-                        render={({ field }) => <TextField id="telefone" label="Telefone" type="number" {...field} />}
+                        id="telefone"
+                        label="Telefone"
+                        type="number"
                     />
-                    <Controller
-                        name="celular"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={celular}
                         onChange={(e) => setCelular(e.target.value)}
-                        render={({ field }) => <TextField id="celular" label="Celular" type="number" {...field} />}
+                        id="celular"
+                        label="Celular"
+                        type="number"
                     />
 
-                    <Controller
-                        name="contato"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={contato}
                         onChange={(e) => setContato(e.target.value)}
-                        render={({ field }) => <TextField id="contato" label="Contato" {...field} />}
+                        id="contato"
+                        label="Contato"
                     />
 
                     <FormControl id="ramoForm" className="ramo" style={{ width: "170px" }}>
                         <InputLabel id="ramoLabel">Ramo de Atividade</InputLabel>
-                        <Controller
+                        <Select
                             name="ramo"
-                            control={control}
                             defaultValue=""
                             value={ramoAtividade}
-                            onChange={(e) => setRamoAtividade(e.target.value)}
-                            render={({ field }) => (
-                                <Select labelId="" id="ramoAtv" {...field}>
-                                    <MenuItem value={1}>1</MenuItem>
-                                    <MenuItem value={2}>2</MenuItem>
-                                    <MenuItem value={3}>3</MenuItem>
-                                </Select>
-                            )
-                            }
-                        />
+                            onChange={(e) => setRamoAtividade(e.target.value)}>
+                            id="ramoAtv"
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                        </Select>
                     </FormControl>
 
-                    <Controller
-                        name="cidade"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={cidade}
                         onChange={(e) => setCidade(e.target.value)}
-                        render={({ field }) => <TextField id="cidade" label="Cidade" {...field} />}
+                        id="cidade"
+                        label="Cidade"
                     />
 
-                    <Controller
-                        name="rua"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={rua}
                         onChange={(e) => setRua(e.target.value)}
-                        render={({ field }) => <TextField id="rua" label="Rua" {...field} />}
+                        id="rua"
+                        label="Rua"
                     />
 
-                    <Controller
-                        name="bairro"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={bairro}
                         onChange={(e) => setBairro(e.target.value)}
-                        render={({ field }) => <TextField id="bairro" label="Bairro" {...field} />}
+                        id="bairro" label="Bairro"
                     />
 
-                    <Controller
-                        name="numero"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={numero}
                         onChange={(e) => setNumero(e.target.value)}
-                        render={({ field }) => <TextField id="numero" label="Número" type="number" {...field} />}
+                        id="numero"
+                        label="Número"
+                        type="number"
                     />
 
                     <FormControl id="UFForm" className="UF" style={{ width: "70px" }}>
                         <InputLabel id="UFLabel">UF</InputLabel>
-                        <Controller
-                            name="UF"
-                            control={control}
+                        <Select labelId=""
                             defaultValue=""
                             value={UF}
-                            onChange={(e) => setUF(e.target.value)}
-                            render={({ field }) => (
-                                <Select labelId="" id="UF" {...field}>
-                                    <MenuItem value={"AC"}>AC</MenuItem>
-                                    <MenuItem value={"AL"}>AL</MenuItem>
-                                    <MenuItem value={"AP"}>AP</MenuItem>
-                                    <MenuItem value={"AM"}>AM</MenuItem>
-                                    <MenuItem value={"BA"}>BA</MenuItem>
-                                    <MenuItem value={"CE"}>CE</MenuItem>
-                                    <MenuItem value={"ES"}>ES</MenuItem>
-                                    <MenuItem value={"GO"}>GO</MenuItem>
-                                    <MenuItem value={"MA"}>MA</MenuItem>
-                                    <MenuItem value={"MT"}>MT</MenuItem>
-                                    <MenuItem value={"MS"}>MS</MenuItem>
-                                    <MenuItem value={"MG"}>MG</MenuItem>
-                                    <MenuItem value={"PA"}>PA</MenuItem>
-                                    <MenuItem value={"PB"}>PB</MenuItem>
-                                    <MenuItem value={"PR"}>PR</MenuItem>
-                                    <MenuItem value={"PE"}>PE</MenuItem>
-                                    <MenuItem value={"PI"}>PI</MenuItem>
-                                    <MenuItem value={"RJ"}>RJ</MenuItem>
-                                    <MenuItem value={"RN"}>RN</MenuItem>
-                                    <MenuItem value={"RS"}>RS</MenuItem>
-                                    <MenuItem value={"RO"}>RO</MenuItem>
-                                    <MenuItem value={"RR"}>RR</MenuItem>
-                                    <MenuItem value={"SC"}>SC</MenuItem>
-                                    <MenuItem value={"SP"}>SP</MenuItem>
-                                    <MenuItem value={"SE"}>SE</MenuItem>
-                                    <MenuItem value={"TO"}>TO</MenuItem>
-                                    <MenuItem value={"DF"}>DF</MenuItem>
-                                </Select>
-                            )
-                            }
-                        />
+                            id="UF"
+                            onChange={(e) => setUF(e.target.value)}>
+                            <MenuItem value={"AC"}>AC</MenuItem>
+                            <MenuItem value={"AL"}>AL</MenuItem>
+                            <MenuItem value={"AP"}>AP</MenuItem>
+                            <MenuItem value={"AM"}>AM</MenuItem>
+                            <MenuItem value={"BA"}>BA</MenuItem>
+                            <MenuItem value={"CE"}>CE</MenuItem>
+                            <MenuItem value={"ES"}>ES</MenuItem>
+                            <MenuItem value={"GO"}>GO</MenuItem>
+                            <MenuItem value={"MA"}>MA</MenuItem>
+                            <MenuItem value={"MT"}>MT</MenuItem>
+                            <MenuItem value={"MS"}>MS</MenuItem>
+                            <MenuItem value={"MG"}>MG</MenuItem>
+                            <MenuItem value={"PA"}>PA</MenuItem>
+                            <MenuItem value={"PB"}>PB</MenuItem>
+                            <MenuItem value={"PR"}>PR</MenuItem>
+                            <MenuItem value={"PE"}>PE</MenuItem>
+                            <MenuItem value={"PI"}>PI</MenuItem>
+                            <MenuItem value={"RJ"}>RJ</MenuItem>
+                            <MenuItem value={"RN"}>RN</MenuItem>
+                            <MenuItem value={"RS"}>RS</MenuItem>
+                            <MenuItem value={"RO"}>RO</MenuItem>
+                            <MenuItem value={"RR"}>RR</MenuItem>
+                            <MenuItem value={"SC"}>SC</MenuItem>
+                            <MenuItem value={"SP"}>SP</MenuItem>
+                            <MenuItem value={"SE"}>SE</MenuItem>
+                            <MenuItem value={"TO"}>TO</MenuItem>
+                            <MenuItem value={"DF"}>DF</MenuItem>
+                        </Select>
                     </FormControl>
 
-                    <Controller
-                        name="cep"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={cep}
                         onChange={(e) => setCep(e.target.value)}
-                        render={({ field }) => <TextField id="cep" label="CEP" type="number" {...field} />}
+                        id="cep"
+                        label="CEP"
+                        type="number" 
                     />
-                    <Controller
-                        name="complemento"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={complemento}
                         onChange={(e) => setComplemento(e.target.value)}
-                        render={({ field }) => <TextField id="complemento" label="Complemento" {...field} />}
+                        id="complemento"
+                        label="Complemento"
                     />
-                    <Controller
-                        name="ip_acesso"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={ipAcesso}
                         onChange={(e) => setIpAcesso(e.target.value)}
-                        render={({ field }) => <TextField id="ip_acesso" label="IP de acesso" {...field} />}
+                        id="ip_acesso"
+                        label="IP de acesso"
                     />
 
-                    <Controller
-                        name="obv"
-                        control={control}
+                    <TextField
                         defaultValue=""
                         value={obv}
                         onChange={(e) => setObv(e.target.value)}
-                        render={({ field }) => <TextField id="obv" label="Observação" {...field} />}
+                        id="obv"
+                        label="Observação"
                     />
 
                 </form>
@@ -481,7 +446,7 @@ function Home() {
 
                 </div>
             </div>
-        </form>
+        </form >
     );
 }
 export default Home;
